@@ -1,0 +1,5 @@
+"Always code as if the guy who ends up maintaining your code will be a violent psychopath who knows where you live" - John Woods
+"That's the thing about people who think they hate computers. What they really hate is lousy programmers." - Larry Niven
+"Give a man a program, frustrate him for a day.  Teach a man to program, frustrate him for a lifetime." - Muhammad Waseem
+"Perl - The only language that looks the same before and after RSA encryption." - Keith Bostic 
+I suggested holding a "Python Object Oriented Programming Seminar", but the acronym was unpopular.  - Joseph Strout
