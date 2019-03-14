@@ -64,21 +64,21 @@ def init():                     # init function for the animation
     top_y = top_y + (top_y/4)
     ax.set_xlim(0.0, 15.0)
     ax.set_ylim(0.0,top_y)
-    rect.set_color('#00ffcc')
-    rect1.set_color('#00ffcc')
-    rect2.set_color('#00ffcc')
-    rect3.set_color('#00ffcc')
-    rect4.set_color('#00ffcc')
-    rect5.set_color('#00ffcc')
-    rect6.set_color('#00ffcc')
-    rect7.set_color('#00ffcc')
-    rect8.set_color('#00ffcc')
-    rect9.set_color('#00ffcc')
-    rect10.set_color('#00ffcc')
-    rect11.set_color('#00ffcc')
-    rect12.set_color('#00ffcc')
-    rect13.set_color('#00ffcc')
-    rect14.set_color('#00ffcc')
+    rect.set_color('#ff6600')
+    rect1.set_color('#990000')
+    rect2.set_color('#66ffff')
+    rect3.set_color('#003399')
+    rect4.set_color('#00ff99')
+    rect5.set_color('#ff00ff')
+    rect6.set_color('#996633')
+    rect7.set_color('#663300')
+    rect8.set_color('#ffcc00')
+    rect9.set_color('#ccccff')
+    rect10.set_color('#ff99cc')
+    rect11.set_color('#993300')
+    rect12.set_color('#0099ff')
+    rect13.set_color('#00cc99')
+    rect14.set_color('#666699')
     
     ax.add_patch(rect)
     ax.add_patch(rect1)
@@ -97,12 +97,15 @@ def init():                     # init function for the animation
     ax.add_patch(rect14)  
 
     xlabel.set_text(years[0])
+    
 
     return xlabel, rect, rect1, rect2, rect3, rect4, rect5, rect6, rect7, rect8, rect9, rect10, rect11, rect12, rect13, rect14, 
 
 
 def animate(num):           # called each frame with rectangle height
     global count
+    if count >= 19:
+        count = 0
 
     rect.set_height(num[0])
     rect1.set_height(num[1])
@@ -128,10 +131,12 @@ def animate(num):           # called each frame with rectangle height
     #print(years[a])
     xlabel.set_text(years[a])
     count += 1
+    #print(count)
 
     return xlabel, rect, rect1, rect2, rect3, rect4, rect5, rect6, rect7, rect8, rect9, rect10, rect11, rect12, rect13, rect14, 
 def onClick(event):
     global pause
+    global count
     if pause:
         ani.event_source.start()
         pause = False
@@ -139,13 +144,15 @@ def onClick(event):
         ani.event_source.stop()
         pause = True
 
+
+
 fig.canvas.mpl_connect('button_press_event',onClick)
 
 ani = animation.FuncAnimation(fig, animate, frames=tf_am, init_func=init,
-                              interval=FRAME_DELTA, repeat=False, blit=True)
+                              interval=FRAME_DELTA, repeat=True, blit=True)
 
 ind = np.arange(15) + (rwidth/2)
 
-plt.xticks(ind,labels[0:14], rotation = 23)
+plt.xticks(ind,labels[0:15], rotation = 23)
 plt.ylabel("Amounts")
 plt.show()
