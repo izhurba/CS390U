@@ -1,3 +1,15 @@
+######################################################################################
+#  This code will ask users for a year between 1970 and 2017, and will then create   #
+# cells with a shade of red denoting the amount of terrorism incidents in that month #
+# for that year.                                                                     #
+#                                                                                    #
+#    Written by Ilya Zhurba, with thanks to Aaron Gordon and the matplotlib website  #
+#    for code snippets. Various other code snippets sourced from previous projects   #
+#                                                                                    #
+######################################################################################
+
+
+
 import csv
 import numpy as np
 import matplotlib as mpl
@@ -112,34 +124,34 @@ def get_next_color(v):       # cycles through colors
         face = cmap.to_rgba(1)
 
     elif vls < 0.5:
-        face = cmap.to_rgba(1.5)
+        face = cmap.to_rgba(1.25)
 
     elif vls < 1:
-        face = cmap.to_rgba(2)
+        face = cmap.to_rgba(1.75)
     
     elif vls < 3:
-        face = cmap.to_rgba(2.5)
+        face = cmap.to_rgba(2)
     
     elif vls < 6:
-        face = cmap.to_rgba(3)
+        face = cmap.to_rgba(2.5)
     
     elif vls < 9:
-        face = cmap.to_rgba(3.5)
+        face = cmap.to_rgba(3)
      
     elif vls < 12:
-        face = cmap.to_rgba(4)
+        face = cmap.to_rgba(3.25)
      
     elif vls < 15:
-        face = cmap.to_rgba(4.5)
+        face = cmap.to_rgba(3.75)
      
     elif vls < 18:
-        face = cmap.to_rgba(5)
+        face = cmap.to_rgba(4)
      
     elif vls < 21:
-        face = cmap.to_rgba(5.5)
+        face = cmap.to_rgba(4.5)
    
     else:
-        face = cmap.to_rgba(6)
+        face = cmap.to_rgba(5)
     return face
 
 
@@ -187,18 +199,18 @@ build()   # create patches at specific locations
 
 
 map1 = mpatches.Rectangle((0, 0), 1, 1, facecolor=cmap.to_rgba(1))
-map2 = mpatches.Rectangle((0, 0), 1, 1, facecolor=cmap.to_rgba(1.5))
-map3 = mpatches.Rectangle((0, 0), 1, 1, facecolor=cmap.to_rgba(2))
-map4 = mpatches.Rectangle((0, 0), 1, 1, facecolor=cmap.to_rgba(2.5))
-map5 = mpatches.Rectangle((0, 0), 1, 1, facecolor=cmap.to_rgba(3))
-map6 = mpatches.Rectangle((0, 0), 1, 1, facecolor=cmap.to_rgba(3.5))
-map7 = mpatches.Rectangle((0, 0), 1, 1, facecolor=cmap.to_rgba(4))
-map8 = mpatches.Rectangle((0, 0), 1, 1, facecolor=cmap.to_rgba(4.5))
-map9 = mpatches.Rectangle((0, 0), 1, 1, facecolor=cmap.to_rgba(5))
-map10 = mpatches.Rectangle((0, 0), 1, 1, facecolor=cmap.to_rgba(5.5))
-map11 = mpatches.Rectangle((0, 0), 1, 1, facecolor=cmap.to_rgba(6))
+map2 = mpatches.Rectangle((0, 0), 1, 1, facecolor=cmap.to_rgba(1.25))
+map3 = mpatches.Rectangle((0, 0), 1, 1, facecolor=cmap.to_rgba(1.75))
+map4 = mpatches.Rectangle((0, 0), 1, 1, facecolor=cmap.to_rgba(2))
+map5 = mpatches.Rectangle((0, 0), 1, 1, facecolor=cmap.to_rgba(2.5))
+map6 = mpatches.Rectangle((0, 0), 1, 1, facecolor=cmap.to_rgba(3))
+map7 = mpatches.Rectangle((0, 0), 1, 1, facecolor=cmap.to_rgba(3.5))
+map8 = mpatches.Rectangle((0, 0), 1, 1, facecolor=cmap.to_rgba(4))
+map9 = mpatches.Rectangle((0, 0), 1, 1, facecolor=cmap.to_rgba(4.25))
+map10 = mpatches.Rectangle((0, 0), 1, 1, facecolor=cmap.to_rgba(4.75))
+map11 = mpatches.Rectangle((0, 0), 1, 1, facecolor=cmap.to_rgba(5))
 
-labels = ['Less than 1.5%', 'Less than 2%', 'Less than 2.5%', 'Less than 3%', 'Less than 4%', 'Less than 6%', 'Less than 8%', 'Less than 9%', 'Less than 10%', 'Less than 11%', 'Less than 12%', '13% or more' ]
+labels = ['Less than 25', 'Less than 50', 'Less than 100', 'Less than 300', 'Less than 600', 'Less than 900', 'Less than 1200', 'Less than 1500', 'Less than 1800', 'Less than 2100', '2100 or more' ]
 
 ax.legend([map1, map2, map3, map4, map5, map6, map7, map8, map9, map10, map11],
                   labels, loc ='center right', fancybox=True)
