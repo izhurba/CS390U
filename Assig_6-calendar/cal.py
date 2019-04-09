@@ -8,8 +8,6 @@
 #                                                                                    #
 ######################################################################################
 
-
-
 import csv
 import numpy as np
 import matplotlib as mpl
@@ -37,8 +35,6 @@ with open("terrordata.csv","r") as data:
         month.append(int(row[1]))
         day.append(int(row[2]))
 
-#print(year[0])
-#print(year.count('1970'))
 
 for y,x in zip(range(1970, 2018),range(12,600,12)):
     #print(y)
@@ -53,8 +49,6 @@ for t in ytotal:
         mtotal.append(month[counter:x].count(m))
     counter = counter + t
 
-#print(mtotal)
-
 
 print('Enter a year from 1970 to 2017: ')
 p = int(input())
@@ -63,7 +57,6 @@ if p in ydict:
     year_text = str(p)
     if p == 1970:
         a = ydict[p]
-        #print('Printing a: ' + str(a))
         testM = mtotal[0:a] 
     else:
         b = ydict[p]
@@ -72,7 +65,6 @@ if p in ydict:
 else:
     print('Not a valid year, try again')
     quit()
-
 
 
 mL = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"]
@@ -89,20 +81,16 @@ swX = 2.5         # starting x coord for first rectangle
 swY = 5.0         # starting y coord for first rectangle
 
 
-
-
-# class that defines a rectangle object (one per data item)
 class Rect:
 
     def __init__(self, num, who, facecolor='#7777CC', sw_corner=(0.0, 0.0), height=0, width=0):
-        self.num = num   # num is value (area of a rectangle)
+        self.num = num
         self.mL = who
         self.sw_corner = sw_corner
         self.height = height
         self.width = width
         self.rect = Cell(sw_corner, width, height, edgecolor='#000000', facecolor=facecolor)
         self.rect._loc = 'center'
-        # self.rect.angle = 45.0
         label = "{0}".format(who)
         self.rect.get_text().set_text(label)
         self.rect.set_gid(who)
@@ -116,9 +104,7 @@ def __init():
     ax.get_yaxis().set_visible(False)
 
 
-
-
-def get_next_color(v):       # cycles through colors
+def get_next_color(v):
     vls = v/100
     if vls < 0.25:
         face = cmap.to_rgba(1)
@@ -184,18 +170,14 @@ def build():        # Build the rectangles and attach to axis
                 curr_y -= height
 
 
-
-
 fig = plt.figure()
 ax = fig.add_axes([0, 0, 1, 1], frameon=False)
 ax.axis("equal")    # so squares will look square
 xlabel = ax.text(0.5,0.95,"Heatmap of Terrorism incidents in " + year_text,bbox={'facecolor':'w','alpha':0.5,'pad':5},transform=ax.transAxes,ha="center")
 
 
-
 bbSW = (swX, swY)   # coordinates of sw corner of bounding box
 build()   # create patches at specific locations
-
 
 
 map1 = mpatches.Rectangle((0, 0), 1, 1, facecolor=cmap.to_rgba(1))
@@ -214,12 +196,6 @@ labels = ['Less than 25', 'Less than 50', 'Less than 100', 'Less than 300', 'Les
 
 ax.legend([map1, map2, map3, map4, map5, map6, map7, map8, map9, map10, map11],
                   labels, loc ='center right', fancybox=True)
-
-
-
-
-#ani = animation.FuncAnimation(fig, animate, frames=tf_am, init_func=init,
-#                              interval=FRAME_DELTA, repeat=True, blit=True)
 
 
 for rt in shapes.values():  # add all of the rectangles to the axis for rendering
