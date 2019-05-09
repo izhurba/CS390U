@@ -1,0 +1,4 @@
+https://data.oecd.org/eduresource/public-spending-on-education.htm		- Data on GDP vs Education
+http://www.oecd.org/pisa/												- Data on Educational Prowess 
+http://data.un.org/														- For Data on GDP, Internet Use, and Education
+various articles on wikipedia											- Pointing towards sources for anything else I said
